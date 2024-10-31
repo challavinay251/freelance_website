@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* Body and Background */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/static/images/HD wallpaper_ Black work table with laptop, smartphone and glasses, computer.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better contrast */
+            padding: 50px 20px;
+            min-height: 100vh; /* Ensures the overlay covers the full viewport */
+        }
+
+        /* Container for Projects */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: black;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Headings and Text */
+        h1 {
+            font-size: 3rem;
+            color: cyan;
+            margin-bottom: 10px;
+            letter-spacing: 1.2px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: white;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Project List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #333;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .contact-text {
+        font-size: 1.2rem;
+        color:white; /* Darker text for contrast */
+        margin-top: 20px;
+        text-align: center;
+        }
+        /* Image Styling */
+        img {
+            max-width: 100%;
+            height: 300px;
+            border-radius: 12px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Video Styling */
+        video {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        video:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Call to Action Link */
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            li {
+                margin: 15px 0;
+            }
+
+            a {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="container">
+        <h1>Projects</h1>
+        <ul>
+            {% for project in projects %}
+            <li>
+                <h2>{{ project.title }}</h2><hr>
+                <!-- Check if the project has an image -->
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% endif %}
+
+                <!-- Check if the project has a video -->
+                {% if project.video %}
+                    <video width="320" height="240" controls>
+                        <source src="{{ project.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endif %}
+                <p>{{ project.description }}</p>
+                <!-- Project URL (if any) -->
+                {% if project.url %}
+                    <a href="{{ project.url }}" target="_blank">View Project</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <h4 class="contact-text">Feel free to <a href="{% url 'contact' %}">contact me </a> for collaboration or project inquiries! </h4>
+</div>
+</body>
+</html>

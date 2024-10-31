@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+    /* Body and Background */
+    body {
+        font-family: 'Arial', sans-serif;
+        background: url('{% static "images/HD wallpaper_ Black work table with laptop, smartphone and glasses, computer.jpeg" %}') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better contrast */
+        padding: 100px 20px;
+    }
+
+    /* Container */
+    .container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: black;
+        border-radius: 15px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Headings and Text */
+    h1 {
+        font-size: 3rem;
+        color: cyan;
+        margin-bottom: 10px;
+        letter-spacing: 1.2px;
+    }
+
+    p.intro {
+        font-size: 1.2rem;
+        color: white;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+
+    /* Profile Photo */
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+        transform: scale(1.05);
+    }
+
+    /* Services Section */
+    .services-section {
+        text-align: center;
+        margin-top: 50px;
+        padding: 40px;
+        background-color: black; /* Light background for the section */
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .services-section h2 {
+        font-size: 2.5rem;
+        color: cyan;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    .services-list {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .services-list li {
+        font-size: 1.2rem;
+        margin: 20px;
+        padding: 20px;
+        background-color: #333; /* Darker background for contrast */
+        color: #ffffff; /* White text for visibility */
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        width: 260px;
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+    .services-list li:hover {
+        background-color: #4CAF50; /* Green hover effect */
+        color: #fff; /* Ensures text remains visible on hover */
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .services-list li:active {
+        transform: scale(0.98);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .services-list {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .services-list li {
+            width: 100%;
+            margin: 15px 0;
+        }
+    }
+
+    /* Contact Information */
+    .contact-info {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .contact-info h3 {
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .contact-info p a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .contact-info p a:hover {
+        text-decoration: none;
+    }
+
+    /* Social Links */
+    .social-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .social-links h4 {
+        width: 100%;
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .social-links a {
+        margin: 10px 20px;
+        font-size: 1.3rem;
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .social-links i {
+        margin-right: 10px;
+        font-size: 1.5rem; /* Adjust size */
+        color: whitesmoke; /* Icon color */
+        transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+        color: #4CAF50;
+    }
+
+    /* Call to Action */
+    .cta {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .cta a {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.3rem;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+    }
+
+    .cta a:hover {
+        background-color: #45a049;
+    }
+
+    /* Style for the paragraph */
+    .contact-text {
+        font-size: 1.2rem;
+        color: whitesmoke; /* Darker text for contrast */
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* Style for the contact link */
+    .contact-text a {
+        color: #4CAF50; /* Green color for the link */
+        text-decoration: none; /* Remove the underline */
+        font-weight: bold;
+        border-bottom: 2px solid transparent; /* Add border for hover effect */
+        transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Hover effect for the contact link */
+    .contact-text a:hover {
+        color: #45a049; /* Slightly darker green on hover */
+        border-bottom: 2px solid #4CAF50; /* Underline effect on hover */
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+        }
+
+        .social-links a {
+            margin: 10px;
+        }
+
+        .cta a {
+            font-size: 1.1rem;
+            padding: 12px 25px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="overlay">
+    <div class="container">
+        <!-- Add your photo here -->
+        <img src="{% static 'images/profilephoto.png' %}" alt="Vinay Challa" class="profile-photo">
+        <h1>Welcome to My Portfolio</h1>
+        <p class="intro">
+            Hi, I'm <strong>Vinay Challa</strong>, a freelance web developer and data engineer specializing in Python, Django, and full-stack development.
+            I have experience in building dynamic and scalable web applications.
+        </p>
+
+        <!-- Services Section -->
+        <div class="services-section">
+            <h2>Freelance Services</h2>
+            <ul class="services-list">
+                <li>Web Development (Frontend & Backend)</li>
+                <li>Web Application Maintenance & Support</li>
+                <li>Python Development</li>
+                <li>Data Analysis (NumPy, Pandas, Matplotlib)</li>
+                <li>Personal Websites</li>
+                <li>Business Websites</li>
+                <li>Blog Applications</li>
+                <li>Portfolios</li>
+                <li>Business Analysis</li>
+            </ul>
+            <p class="contact-text">Feel free to <a href="mailto:vinaychalla654@gmail.com">contact me</a> for collaboration or project inquiries!</p>
+        </div>
+
+        <!-- Contact Info Section -->
+        <div class="contact-info">
+            <h3>Contact Me</h3>
+            <p>Email: <a href="mailto:vinaychalla654@gmail.com">vinaychalla654@gmail.com</a></p>
+            <div class="social-links">
+                <h4>Follow Me</h4>
+                <a href="https://www.linkedin.com/in/freelance-vinay-bb0403334/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/challavinay251" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://x.com/vinay_Freelance" target="_blank">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.instagram.com/freelance_pythondjango_dev/" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta">
+            <p><a href="{% url 'portfolio' %}">View My Projects</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
